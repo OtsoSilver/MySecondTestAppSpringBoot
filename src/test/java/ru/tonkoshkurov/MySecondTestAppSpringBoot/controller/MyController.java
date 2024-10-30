@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import ru.tonkoshkurov.MySecondTestAppSpringBoot.exception.UnsupportedCodeException;
 import ru.tonkoshkurov.MySecondTestAppSpringBoot.exception.ValidationFailedException;
 import ru.tonkoshkurov.MySecondTestAppSpringBoot.model.Request;
 import ru.tonkoshkurov.MySecondTestAppSpringBoot.model.Response;
@@ -34,8 +35,12 @@ public class MyController {
                 .errorMessage("")
                 .build();
         try {
+            if (Integer.parseInt(request.getUid()) == 123) {
+                throw new UnsupportedCodeException("Недопустимое значение Uid");
+            }
+
             validationService.isValid(bindingResult);
-        } catch (ValidationFailedException e){
+        } catch (ValidationFailedException | UnsupportedCodeException e){
             response.setCode("Failed");
             response.setErrorMessage("ValidationException");
             response.setErrorMessage("Ошибка валидации");
