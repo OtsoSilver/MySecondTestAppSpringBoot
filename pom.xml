@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.4</version>
+		<version>3.2.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ru.tonkoshkurov</groupId>
-	<artifactId>MySecondTestAppSpringBoot</artifactId>
+	<groupId>ru.mishin</groupId>
+	<artifactId>MySecondSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>MySecondTestAppSpringBoot</name>
+	<name>MySecondSpringBoot</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -47,8 +47,14 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>2.23.1</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
